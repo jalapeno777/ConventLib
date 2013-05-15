@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class StringUtils {
+public final class StringUtils {
     protected StringUtils() {
 
     }

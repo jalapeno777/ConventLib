@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-public class ContainerUtils {
+public final class ContainerUtils {
 
 	protected ContainerUtils() {
 
