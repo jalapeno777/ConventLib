@@ -12,20 +12,89 @@ public final class RandomUtils {
     protected RandomUtils() {
     }
 
-    public static long randomRangeWhole(long value1, long value2) {
+    /**
+     * Returns a value between value1 and value2 that can include value1, but not value2
+     *
+     * @param value1 First value
+     * @param value2 Second value
+     * @return a value between value1 and value2 that can include value1, but not value2
+     */
+    public static long randomRangeWholeExclusive(long value1, long value2) {
         return Math.min(value1, value2) +
                 (long) (random.nextDouble() * (Math.max(value1, value2) - Math.min(value1, value2)));
     }
 
-    public static long randomRangeWholeContainer(WholeRangeContainer rangeContainer) {
+    /**
+     * Returns a value between value1 and value2 that can include value1 and value2
+     *
+     * @param value1 First value
+     * @param value2 Second value
+     * @return a value between value1 and value2 that can include value1 and value2
+     */
+    public static long randomRangeWholeInclusive(long value1, long value2) {
+        return Math.min(value1, value2) +
+                (long) (random.nextDouble() * (Math.max(value1, value2) - Math.min(value1, value2) + 1));
+    }
+
+    /**
+     * Returns a value based on a WholeRangeContainer, including its lower value but not the upper
+     *
+     * @param rangeContainer WholeRangeContainer to check against
+     * @return a value based on a WholeRangeContainer, including its lower value but not the upper
+     */
+    public static long randomRangeWholeContainerExclusive(WholeRangeContainer rangeContainer) {
         return rangeContainer.getLower() + (long) (random.nextDouble() * rangeContainer.getRange());
     }
 
-    public static double randomRangeDecimal(double value1, double value2) {
+    /**
+     * Returns a value based on a WholeRangeContainer, including both its lower and upper values
+     *
+     * @param rangeContainer WholeRangeContainer to check against
+     * @return a value based on a WholeRangeContainer, including both its lower and upper values
+     */
+    public static long randomRangeWholeContainerInclusive(WholeRangeContainer rangeContainer) {
+        return rangeContainer.getLower() + (long) (random.nextDouble() * (rangeContainer.getRange() + 1));
+    }
+
+    /**
+     * Returns a value between value1 and value2 that can include value1, but not value2
+     *
+     * @param value1 First value
+     * @param value2 Second value
+     * @return a value between value1 and value2 that can include value1, but not value2
+     */
+    public static double randomRangeDecimalExclusive(double value1, double value2) {
         return Math.min(value1, value2) + random.nextDouble() * (Math.max(value1, value2) - Math.min(value1, value2));
     }
 
-    public static double randomRangeDecimalContainer(DecimalRangeContainer rangeContainer) {
+    /**
+     * Returns a value between value1 and value2 that can include value1 and value2
+     *
+     * @param value1 First value
+     * @param value2 Second value
+     * @return a value between value1 and value2 that can include value1 and value2
+     */
+    public static double randomRangeDecimalInclusive(double value1, double value2) {
+        return Math.min(value1, value2) + random.nextDouble() * (Math.max(value1, value2) - Math.min(value1, value2) + 1);
+    }
+
+    /**
+     * Returns a value based on a DecimalRangeContainer, including both its lower value but not its upper
+     *
+     * @param rangeContainer DecimalRangeContainer to check against
+     * @return a value based on a DecimalRangeContainer, including both its lower value but not its upper
+     */
+    public static double randomRangeDecimalContainerExclusive(DecimalRangeContainer rangeContainer) {
         return rangeContainer.getLower() + random.nextDouble() * rangeContainer.getRange();
+    }
+
+    /**
+     * Returns a value based on a DecimalRangeContainer, including both its lower and upper values
+     *
+     * @param rangeContainer DecimalRangeContainer to check against
+     * @return a value based on a DecimalRangeContainer, including both its lower and upper values
+     */
+    public static double randomRangeDecimalContainerInclusive(DecimalRangeContainer rangeContainer) {
+        return rangeContainer.getLower() + random.nextDouble() * (rangeContainer.getRange() + 1);
     }
 }

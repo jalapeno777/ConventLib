@@ -7,40 +7,90 @@ import org.junit.Test;
 
 public class RandomUtilsTest {
     @Test
-    public void testRandomRangeWhole() throws Exception {
+    public void testRandomRangeWholeExclusive() throws Exception {
         long value1 = 10;
         long value2 = 20;
 
-        long result = RandomUtils.randomRangeWhole(value1, value2);
+        long result = RandomUtils.randomRangeWholeExclusive(value1, value2);
 
+        Assert.assertNotNull(result);
+        Assert.assertTrue(result >= value1 && result < value2);
+    }
+
+    @Test
+    public void testRandomRangeWholeInclusive() throws Exception {
+        long value1 = 10;
+        long value2 = 20;
+
+        long result = RandomUtils.randomRangeWholeInclusive(value1, value2);
+
+        Assert.assertNotNull(result);
         Assert.assertTrue(result >= value1 && result <= value2);
     }
 
     @Test
-    public void testRandomRangeWholeContainer() throws Exception {
-        WholeRangeContainer rangeContainer = new WholeRangeContainer(10, 20);
+    public void testRandomRangeWholeContainerExclusive() throws Exception {
+        WholeRangeContainer wholeRangeContainer = new WholeRangeContainer(10, 20);
 
-        long result = RandomUtils.randomRangeWholeContainer(rangeContainer);
+        long result = RandomUtils.randomRangeWholeContainerExclusive(wholeRangeContainer);
 
-        Assert.assertTrue(result >= rangeContainer.getLower() && result <= rangeContainer.getHigher());
+        Assert.assertNotNull(wholeRangeContainer);
+        Assert.assertNotNull(result);
+        Assert.assertTrue(result >= wholeRangeContainer.getLower() && result < wholeRangeContainer.getHigher());
     }
 
     @Test
-    public void testRandomRangeDecimal() throws Exception {
+    public void testRandomRangeWholeContainerInclusive() throws Exception {
+        WholeRangeContainer wholeRangeContainer = new WholeRangeContainer(10, 20);
+
+        long result = RandomUtils.randomRangeWholeContainerInclusive(wholeRangeContainer);
+
+        Assert.assertNotNull(wholeRangeContainer);
+        Assert.assertNotNull(result);
+        Assert.assertTrue(result >= wholeRangeContainer.getLower() && result <= wholeRangeContainer.getHigher());
+    }
+
+    @Test
+    public void testRandomRangeDecimalExclusive() throws Exception {
         double value1 = 10.0;
         double value2 = 20.0;
 
-        double result = RandomUtils.randomRangeDecimal(value1, value2);
+        double result = RandomUtils.randomRangeDecimalExclusive(value1, value2);
 
+        Assert.assertNotNull(result);
+        Assert.assertTrue(result >= value1 && result < value2);
+    }
+
+    @Test
+    public void testRandomRangeDecimalInclusive() throws Exception {
+        double value1 = 10.0;
+        double value2 = 20.0;
+
+        double result = RandomUtils.randomRangeDecimalInclusive(value1, value2);
+
+        Assert.assertNotNull(result);
         Assert.assertTrue(result >= value1 && result <= value2);
     }
 
     @Test
-    public void testRandomRangeDecimalContainer() throws Exception {
-        DecimalRangeContainer rangeContainer = new DecimalRangeContainer(10.0, 20.0);
+    public void testRandomRangeDecimalContainerExclusive() throws Exception {
+        DecimalRangeContainer decimalRangeContainer = new DecimalRangeContainer(10.0, 20.0);
 
-        double result = RandomUtils.randomRangeDecimalContainer(rangeContainer);
+        double result = RandomUtils.randomRangeDecimalContainerExclusive(decimalRangeContainer);
 
-        Assert.assertTrue(result >= rangeContainer.getLower() && result <= rangeContainer.getHigher());
+        Assert.assertNotNull(decimalRangeContainer);
+        Assert.assertNotNull(result);
+        Assert.assertTrue(result >= decimalRangeContainer.getLower() && result < decimalRangeContainer.getHigher());
+    }
+
+    @Test
+    public void testRandomRangeDecimalContainerInclusive() throws Exception {
+        DecimalRangeContainer decimalRangeContainer = new DecimalRangeContainer(10.0, 20.0);
+
+        double result = RandomUtils.randomRangeDecimalContainerInclusive(decimalRangeContainer);
+
+        Assert.assertNotNull(decimalRangeContainer);
+        Assert.assertNotNull(result);
+        Assert.assertTrue(result >= decimalRangeContainer.getLower() && result <= decimalRangeContainer.getHigher());
     }
 }
