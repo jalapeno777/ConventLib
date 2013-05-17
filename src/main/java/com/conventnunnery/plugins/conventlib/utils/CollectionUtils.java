@@ -5,9 +5,9 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-public final class ContainerUtils {
+public final class CollectionUtils {
 
-	protected ContainerUtils() {
+	protected CollectionUtils() {
 
 	}
 

@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContainerUtilsTest {
+public class CollectionUtilsTest {
 
 	@Test
 	public void testContainsIgnoreCase() throws Exception {
@@ -16,7 +16,7 @@ public class ContainerUtilsTest {
 		l.add("three");
 		l.add("four");
 
-		boolean b = ContainerUtils.containsIgnoreCase(l, "THREE");
+		boolean b = CollectionUtils.containsIgnoreCase(l, "THREE");
 		Assert.assertEquals(true, b);
 	}
 
@@ -30,7 +30,7 @@ public class ContainerUtilsTest {
 		l.add("two");
 		l.add("four");
 
-		List<String> noDupes = ContainerUtils.suppressDuplicates(l);
+		List<String> noDupes = CollectionUtils.suppressDuplicates(l);
 		Assert.assertNotNull(noDupes);
 		Assert.assertEquals(4, noDupes.size());
 		Assert.assertEquals("one", noDupes.get(0));
@@ -47,7 +47,7 @@ public class ContainerUtilsTest {
 		l.add("three");
 		l.add("four");
 
-		String[] array = ContainerUtils.toStringArray(l);
+		String[] array = CollectionUtils.toStringArray(l);
 		Assert.assertNotNull(array);
 		Assert.assertEquals(4, array.length);
 	}
