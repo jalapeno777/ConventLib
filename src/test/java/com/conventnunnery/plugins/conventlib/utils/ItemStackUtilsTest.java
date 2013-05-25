@@ -10,14 +10,14 @@ public class ItemStackUtilsTest {
         Material material = Material.GOLD_PICKAXE;
         double value1 = 0.1;
         double value2 = 1.0;
-        short durability = ItemStackUtils.getDurabilityForMaterial(material, value1, value2);
+        short durability = ItemStackUtils.getAcceptableDurability(material, ItemStackUtils.getDurabilityForMaterial
+                (material,
+                        value1, value2));
 
         Assert.assertNotNull(material);
         Assert.assertNotNull(durability);
-        Assert.assertTrue(durability >= (material.getMaxDurability() - (material.getMaxDurability() - Math.max
-                (value1,value2))));
-        Assert.assertTrue(
-                durability <= (material.getMaxDurability() - (material.getMaxDurability() * Math.min(value1, value2))));
+        Assert.assertTrue(durability >= 0);
+        Assert.assertTrue(durability <= material.getMaxDurability());
     }
 
     @Test
