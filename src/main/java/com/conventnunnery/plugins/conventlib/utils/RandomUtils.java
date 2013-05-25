@@ -35,7 +35,7 @@ public final class RandomUtils {
     public static long randomRangeWholeInclusive(long value1, long value2) {
         long value = Math.min(value1, value2) +
                 (long) (random.nextDouble() * (Math.max(value1, value2) - Math.min(value1, value2) + 1));
-        return Math.min(value, value2);
+        return Math.min(value, Math.max(value1,value2));
     }
 
     /**
@@ -80,7 +80,7 @@ public final class RandomUtils {
     public static double randomRangeDecimalInclusive(double value1, double value2) {
         double value = Math.min(value1, value2) + random.nextDouble() * (Math.max(value1, value2) - Math
                 .min(value1, value2) + 1);
-        return Math.min(value, value2);
+        return Math.min(value, Math.max(value1,value2));
     }
 
     /**
