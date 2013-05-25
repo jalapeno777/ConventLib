@@ -33,8 +33,9 @@ public final class RandomUtils {
      * @return a value between value1 and value2 that can include value1 and value2
      */
     public static long randomRangeWholeInclusive(long value1, long value2) {
-        return Math.min(value1, value2) +
+        long value = Math.min(value1, value2) +
                 (long) (random.nextDouble() * (Math.max(value1, value2) - Math.min(value1, value2) + 1));
+        return Math.min(value, value2);
     }
 
     /**
@@ -54,7 +55,8 @@ public final class RandomUtils {
      * @return a value based on a WholeRangeContainer, including both its lower and upper values
      */
     public static long randomRangeWholeContainerInclusive(WholeRangeContainer rangeContainer) {
-        return rangeContainer.getLower() + (long) (random.nextDouble() * (rangeContainer.getRange() + 1));
+        long value = rangeContainer.getLower() + (long) (random.nextDouble() * (rangeContainer.getRange() + 1));
+        return Math.min(value, rangeContainer.getHigher());
     }
 
     /**
@@ -76,8 +78,9 @@ public final class RandomUtils {
      * @return a value between value1 and value2 that can include value1 and value2
      */
     public static double randomRangeDecimalInclusive(double value1, double value2) {
-        return Math.min(value1, value2) + random.nextDouble() * (Math.max(value1, value2) - Math
+        double value = Math.min(value1, value2) + random.nextDouble() * (Math.max(value1, value2) - Math
                 .min(value1, value2) + 1);
+        return Math.min(value, value2);
     }
 
     /**
@@ -97,6 +100,7 @@ public final class RandomUtils {
      * @return a value based on a DecimalRangeContainer, including both its lower and upper values
      */
     public static double randomRangeDecimalContainerInclusive(DecimalRangeContainer rangeContainer) {
-        return rangeContainer.getLower() + random.nextDouble() * (rangeContainer.getRange() + 1);
+        double value = rangeContainer.getLower() + random.nextDouble() * (rangeContainer.getRange() + 1);
+        return Math.min(value, rangeContainer.getHigher());
     }
 }
