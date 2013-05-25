@@ -18,8 +18,8 @@ public class RandomUtilsTest {
         System.out.println("Exclusive: " + result);
 
         Assert.assertNotNull(result);
-        Assert.assertTrue(result >= value1);
-        Assert.assertTrue(result < value2);
+        Assert.assertTrue(result >= Math.min(value1,value2));
+        Assert.assertTrue(result < Math.max(value1,value2));
     }
 
     @Test
@@ -34,8 +34,8 @@ public class RandomUtilsTest {
         System.out.println("Inclusive: " + result);
 
         Assert.assertNotNull(result);
-        Assert.assertTrue(result >= value1);
-        Assert.assertTrue(result <= value2);
+        Assert.assertTrue(result >= Math.min(value1,value2));
+        Assert.assertTrue(result <= Math.max(value1,value2));
     }
 
     @Test
@@ -83,8 +83,8 @@ public class RandomUtilsTest {
         System.out.println("Exclusive: " + result);
 
         Assert.assertNotNull(result);
-        Assert.assertTrue(result >= value1);
-        Assert.assertTrue(result < value2);
+        Assert.assertTrue(result >= Math.min(value1,value2));
+        Assert.assertTrue(result < Math.max(value1,value2));
     }
 
     @Test
@@ -101,8 +101,8 @@ public class RandomUtilsTest {
         Assert.assertNotNull(result);
         Assert.assertNotNull(value1);
         Assert.assertNotNull(value2);
-        Assert.assertTrue(result >= value1);
-        Assert.assertTrue(result <= value2);
+        Assert.assertTrue(result >= Math.min(value1,value2));
+        Assert.assertTrue(result <= Math.max(value1,value2));
     }
 
     @Test
@@ -134,6 +134,6 @@ public class RandomUtilsTest {
         Assert.assertNotNull(decimalRangeContainer);
         Assert.assertNotNull(result);
         Assert.assertTrue(result >= decimalRangeContainer.getLower());
-        Assert.assertTrue(result < decimalRangeContainer.getHigher());
+        Assert.assertTrue(result <= decimalRangeContainer.getHigher());
     }
 }
