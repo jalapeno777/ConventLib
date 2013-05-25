@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public final class StringUtils {
-    protected StringUtils() {
+    private StringUtils() {
 
     }
 

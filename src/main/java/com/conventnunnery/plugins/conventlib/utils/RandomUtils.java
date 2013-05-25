@@ -9,7 +9,8 @@ public final class RandomUtils {
 
     private static final Random random = new Random();
 
-    protected RandomUtils() {
+    private RandomUtils() {
+
     }
 
     /**
@@ -75,7 +76,8 @@ public final class RandomUtils {
      * @return a value between value1 and value2 that can include value1 and value2
      */
     public static double randomRangeDecimalInclusive(double value1, double value2) {
-        return Math.min(value1, value2) + random.nextDouble() * (Math.max(value1, value2) - Math.min(value1, value2) + 1);
+        return Math.min(value1, value2) + random.nextDouble() * (Math.max(value1, value2) - Math
+                .min(value1, value2) + 1);
     }
 
     /**

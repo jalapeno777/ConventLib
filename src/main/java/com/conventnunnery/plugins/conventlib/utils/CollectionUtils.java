@@ -7,7 +7,7 @@ import java.util.List;
 
 public final class CollectionUtils {
 
-	protected CollectionUtils() {
+	private CollectionUtils() {
 
 	}
 

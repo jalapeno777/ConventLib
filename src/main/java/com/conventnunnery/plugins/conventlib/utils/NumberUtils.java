@@ -12,7 +12,7 @@ package com.conventnunnery.plugins.conventlib.utils;
 
 public final class NumberUtils {
 
-	protected NumberUtils() {
+	private NumberUtils() {
 
 	}
 
