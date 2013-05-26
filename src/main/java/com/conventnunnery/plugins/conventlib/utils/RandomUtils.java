@@ -35,7 +35,7 @@ public final class RandomUtils {
     public static long randomRangeWholeInclusive(long value1, long value2) {
         long value = Math.min(value1, value2) +
                 (long) (random.nextDouble() * (Math.max(value1, value2) - Math.min(value1, value2) + 1));
-        return Math.min(value, Math.max(value1,value2));
+        return Math.min(value, Math.max(value1, value2));
     }
 
     /**
@@ -80,7 +80,7 @@ public final class RandomUtils {
     public static double randomRangeDecimalInclusive(double value1, double value2) {
         double value = Math.min(value1, value2) + random.nextDouble() * (Math.max(value1, value2) - Math
                 .min(value1, value2) + 1);
-        return Math.min(value, Math.max(value1,value2));
+        return Math.min(value, Math.max(value1, value2));
     }
 
     /**
@@ -90,7 +90,8 @@ public final class RandomUtils {
      * @return a value based on a DecimalRangeContainer, including both its lower value but not its upper
      */
     public static double randomRangeDecimalContainerExclusive(DecimalRangeContainer rangeContainer) {
-        return rangeContainer.getLower() + random.nextDouble() * rangeContainer.getRange();
+        double value = rangeContainer.getLower() + random.nextDouble() * rangeContainer.getRange();
+        return Math.max(rangeContainer.getLower(), Math.min(value, rangeContainer.getHigher()));
     }
 
     /**
@@ -101,6 +102,6 @@ public final class RandomUtils {
      */
     public static double randomRangeDecimalContainerInclusive(DecimalRangeContainer rangeContainer) {
         double value = rangeContainer.getLower() + random.nextDouble() * (rangeContainer.getRange() + 1);
-        return Math.min(value, rangeContainer.getHigher());
+        return Math.max(rangeContainer.getLower(), Math.min(value, rangeContainer.getHigher()));
     }
 }
