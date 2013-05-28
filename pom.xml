@@ -15,7 +15,7 @@
         <url>https://github.com/Nunnery/ConventLib/issues</url>
     </issueManagement>
     <build>
-        <finalName>ConventLib</finalName>
+        <finalName>${project.artifactId}-${project.version}</finalName>
         <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
         <resources>
             <resource>
