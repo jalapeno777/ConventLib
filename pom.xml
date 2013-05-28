@@ -6,7 +6,7 @@
 
     <groupId>com.conventnunnery</groupId>
     <artifactId>ConventLib</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5-SNAPSHOT</version>
 
     <name>ConventLib</name>
     <url>https://github.com/Nunnery/ConventLib</url>
