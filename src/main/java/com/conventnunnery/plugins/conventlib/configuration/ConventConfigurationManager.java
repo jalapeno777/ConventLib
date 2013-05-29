@@ -17,10 +17,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.conventnunnery.plugins.mythicdrops.managers;
+package com.conventnunnery.plugins.conventlib.configuration;
 
-import com.conventnunnery.plugins.conventlib.configuration.ConventYamlConfiguration;
-import com.conventnunnery.plugins.conventlib.configuration.ConventConfigurationFile;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 
@@ -28,24 +26,25 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 
-public class ConfigurationManager {
+public class ConventConfigurationManager {
 
     private final Map<ConventConfigurationFile, ConventYamlConfiguration> configurations;
     private final Set<ConventConfigurationFile> configurationFiles;
     private final Plugin plugin;
 
-    public ConfigurationManager(Plugin plugin, Set<ConventConfigurationFile> configurationFiles) {
+    public ConventConfigurationManager(Plugin plugin, Set<ConventConfigurationFile> configurationFiles) {
         this.plugin = plugin;
         
-        configurationFiles = configurationFiles;
+        this.configurationFiles = configurationFiles;
         configurations = new HashMap<ConventConfigurationFile, ConventYamlConfiguration>();
 
         loadConfig();
     }
 
-    private void createConfig(ConfigurationFile config) {
+    private void createConfig(ConventConfigurationFile config) {
         ConventYamlConfiguration file = new ConventYamlConfiguration(
                 new File(plugin.getDataFolder(), config.getFileName()));
         saveDefaults(file, config);
@@ -90,7 +89,7 @@ public class ConfigurationManager {
      * Saves the plugin's configs
      */
     public void saveConfig() {
-        for (ConfigurationFile file : configurationFiles) {
+        for (ConventConfigurationFile file : configurationFiles) {
             if (configurations.containsKey(file)) {
                 try {
                     configurations.get(file).save(
@@ -103,7 +102,7 @@ public class ConfigurationManager {
         }
     }
 
-    private boolean needToUpdate(ConventYamlConfiguration config, ConfigurationFile file) {
+    private boolean needToUpdate(ConventYamlConfiguration config, ConventConfigurationFile file) {
         YamlConfiguration inPlugin = YamlConfiguration.loadConfiguration(plugin
                 .getResource(file.getFileName()));
         if (inPlugin == null) {
@@ -114,7 +113,7 @@ public class ConfigurationManager {
         return configVersion == null || currentVersion != null && !(configVersion.equalsIgnoreCase(currentVersion));
     }
 
-    private boolean backup(ConfigurationFile file) {
+    private boolean backup(ConventConfigurationFile file) {
         File actualFile = new File(plugin.getDataFolder(), file.getFileName());
         if (!actualFile.exists()) {
             return false;
@@ -124,7 +123,7 @@ public class ConfigurationManager {
     }
 
     private void saveDefaults(ConventYamlConfiguration config,
-                              ConfigurationFile file) {
+                              ConventConfigurationFile file) {
         YamlConfiguration yc = ConventYamlConfiguration.loadConfiguration(plugin
                 .getResource(file.getFileName()));
         for (String key : config.getKeys(true)) {

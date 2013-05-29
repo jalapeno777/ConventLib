@@ -18,8 +18,16 @@
  */
 package com.conventnunnery.plugins.conventlib.configuration;
 
-public interface ConventConfigurationFile {
+public class ConventConfigurationFile {
 
-    public String getFileName();
+    private final String filename;
+
+    protected ConventConfigurationFile(String filename) {
+        this.filename = filename;
+    }
+
+    public String getFileName() {
+        return this.filename;
+    }
 
 }
