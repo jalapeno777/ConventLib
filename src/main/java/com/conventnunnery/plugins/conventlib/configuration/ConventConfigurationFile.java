@@ -24,6 +24,6 @@ public interface ConventConfigurationFile {
      * Returns the name of the file
      * @return name of the file
      */
-    public String getFileName();
+    String getFileName();
 
 }
