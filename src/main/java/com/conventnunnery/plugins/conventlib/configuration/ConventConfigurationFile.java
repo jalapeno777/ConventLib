@@ -20,6 +20,10 @@ package com.conventnunnery.plugins.conventlib.configuration;
 
 public interface ConventConfigurationFile {
 
+    /**
+     * Returns the name of the file
+     * @return name of the file
+     */
     public String getFileName();
 
 }

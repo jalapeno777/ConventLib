@@ -10,7 +10,6 @@ public final class RandomUtils {
     private static final Random random = new Random();
 
     private RandomUtils() {
-
     }
 
     /**

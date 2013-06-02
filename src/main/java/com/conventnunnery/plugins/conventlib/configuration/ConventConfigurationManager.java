@@ -35,6 +35,11 @@ public class ConventConfigurationManager {
     private final Set<ConventConfigurationFile> configurationFiles;
     private final Plugin plugin;
 
+    /**
+     * Instantiates a new version of the configuration manager for a plugin
+     * @param plugin Plugin that is using the manager
+     * @param configurationFiles Set of ConventConfigurationFiles this plugin uses
+     */
     public ConventConfigurationManager(Plugin plugin, Set<ConventConfigurationFile> configurationFiles) {
         this.plugin = plugin;
         
@@ -51,6 +56,11 @@ public class ConventConfigurationManager {
         configurations.put(config, file);
     }
 
+    /**
+     * Returns the ConventYamlConfiguration that enables access to the file itself.
+     * @param file The file to return
+     * @return Object allowing access to the file itself
+     */
     public ConventYamlConfiguration getConfiguration(ConventConfigurationFile file) {
         return configurations.get(file);
     }
@@ -88,7 +98,7 @@ public class ConventConfigurationManager {
     /**
      * Saves the plugin's configs
      */
-    public void saveConfig() {
+    public final void saveConfig() {
         for (ConventConfigurationFile file : configurationFiles) {
             if (configurations.containsKey(file)) {
                 try {
@@ -102,6 +112,10 @@ public class ConventConfigurationManager {
         }
     }
 
+    /*
+     * Checks if a specified file needs to be updated by checking the version field in the supplied
+     * ConventYamlConfiguration against the version field in the copy of the file inside the jar.
+     */
     private boolean needToUpdate(ConventYamlConfiguration config, ConventConfigurationFile file) {
         YamlConfiguration inPlugin = YamlConfiguration.loadConfiguration(plugin
                 .getResource(file.getFileName()));
@@ -113,6 +127,9 @@ public class ConventConfigurationManager {
         return configVersion == null || currentVersion != null && !(configVersion.equalsIgnoreCase(currentVersion));
     }
 
+    /*
+     * Backs up the specified file by changing its name from <filename>.yml to <filename>_old.yml.
+     */
     private boolean backup(ConventConfigurationFile file) {
         File actualFile = new File(plugin.getDataFolder(), file.getFileName());
         if (!actualFile.exists()) {
@@ -122,6 +139,10 @@ public class ConventConfigurationManager {
         return actualFile.renameTo(newFile);
     }
 
+    /*
+     * Saves the default values from the copy of the ConventConfigurationFile in the jar to the
+     * specified ConventYamlConfiguration by clearing the file and reprinting values.
+     */
     private void saveDefaults(ConventYamlConfiguration config,
                               ConventConfigurationFile file) {
         YamlConfiguration yc = ConventYamlConfiguration.loadConfiguration(plugin

@@ -24,11 +24,19 @@ public class Debugger {
     public final Plugin plugin;
     private final File dataFolder;
 
+    /**
+     * Instantiates a new Debugger.
+     * @param plugin Plugin using the Debugger
+     */
     public Debugger(Plugin plugin) {
         this.plugin = plugin;
         this.dataFolder = plugin.getDataFolder();
     }
 
+    /**
+     * Prints each string to a debug file in the Plugin's folder
+     * @param messages Array of strings to print to debug file
+     */
     public void debug(String... messages) {
         try {
             if (!dataFolder.exists()) {
@@ -57,6 +65,10 @@ public class Debugger {
         }
     }
 
+    /**
+     * Returns the Plugin using the Debugger.
+     * @return Plugin using the Debugger
+     */
     public Plugin getPlugin() {
         return plugin;
     }
