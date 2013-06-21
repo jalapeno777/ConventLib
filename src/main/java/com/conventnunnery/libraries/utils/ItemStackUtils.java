@@ -1,4 +1,4 @@
-package com.conventnunnery.plugins.conventlib.utils;
+package com.conventnunnery.libraries.utils;
 
 import org.bukkit.Material;
 

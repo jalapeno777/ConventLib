@@ -1,4 +1,4 @@
-package com.conventnunnery.plugins.conventlib.containers;
+package com.conventnunnery.libraries.containers;
 
 public class DecimalRangeContainer {
     private final double value1;

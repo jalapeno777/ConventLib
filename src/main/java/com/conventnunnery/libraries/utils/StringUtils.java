@@ -1,4 +1,4 @@
-package com.conventnunnery.plugins.conventlib.utils;
+package com.conventnunnery.libraries.utils;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;

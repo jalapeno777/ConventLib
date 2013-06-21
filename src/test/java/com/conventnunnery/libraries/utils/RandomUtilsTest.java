@@ -1,7 +1,7 @@
-package com.conventnunnery.plugins.conventlib.utils;
+package com.conventnunnery.libraries.utils;
 
-import com.conventnunnery.plugins.conventlib.containers.DecimalRangeContainer;
-import com.conventnunnery.plugins.conventlib.containers.WholeRangeContainer;
+import com.conventnunnery.libraries.containers.DecimalRangeContainer;
+import com.conventnunnery.libraries.containers.WholeRangeContainer;
 import junit.framework.Assert;
 import org.junit.Test;
 

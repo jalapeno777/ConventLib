@@ -227,7 +227,7 @@ public class Updater
 				}
 			}
 			//Just a quick check to make sure we didn't leave any files from last time...
-			for(File xFile : new File("plugins/" + updateFolder).listFiles())
+			for(File xFile : new File("libraries/" + updateFolder).listFiles())
 			{
 				if(xFile.getName().endsWith(".zip"))
 				{
@@ -304,7 +304,7 @@ public class Updater
 					String name = destinationFilePath.getName();
 					if(name.endsWith(".jar") && pluginFile(name))
 					{
-						destinationFilePath.renameTo(new File("plugins/" + updateFolder + "/" + name));
+						destinationFilePath.renameTo(new File("libraries/" + updateFolder + "/" + name));
 					}
 				}
 				entry = null;
@@ -320,7 +320,7 @@ public class Updater
 				{
 					if(pluginFile(dFile.getName()))
 					{
-						File oFile = new File("plugins/" + dFile.getName()); // Get current dir
+						File oFile = new File("libraries/" + dFile.getName()); // Get current dir
 						File[] contents = oFile.listFiles(); // List of existing files in the current dir
 						for(File cFile : dFile.listFiles()) // Loop through all the files in the new dir
 						{
@@ -361,11 +361,11 @@ public class Updater
 	}
 
 	/**
-	 * Check if the name of a jar is one of the plugins currently installed, used for extracting the correct files out of a zip.
+	 * Check if the name of a jar is one of the libraries currently installed, used for extracting the correct files out of a zip.
 	 */
 	public boolean pluginFile(String name)
 	{
-		for(File file : new File("plugins").listFiles())
+		for(File file : new File("libraries").listFiles())
 		{
 			if(file.getName().equals(name))
 			{
@@ -601,7 +601,7 @@ public class Updater
 								String[] split = fileLink.split("/");
 								name = split[split.length-1];
 							}
-							saveFile(new File("plugins/" + updateFolder), name, fileLink);
+							saveFile(new File("libraries/" + updateFolder), name, fileLink);
 						}
 						else
 						{
