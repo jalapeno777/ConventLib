@@ -48,4 +48,20 @@ public final class CollectionUtils {
         return collection.toArray(new String[size]);
     }
 
+    /**
+     * Takes a Collection of Strings and returns it capitalized.
+     * @param collection Collection of Strings
+     * @return
+     */
+    public static Collection<String> capitalizeCollection(Collection<String> collection) {
+        Collection<String> stringCollection = new ArrayList<String>();
+        if (collection == null || collection.isEmpty()) {
+            return stringCollection;
+        }
+        for (String string : collection) {
+            stringCollection.add(StringUtils.capitalize(string));
+        }
+        return stringCollection;
+    }
+
 }

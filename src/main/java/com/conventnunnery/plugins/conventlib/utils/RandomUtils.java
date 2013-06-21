@@ -125,7 +125,7 @@ public final class RandomUtils {
     public static double randomRangeDecimalInclusive(double value1, double value2) {
         double min = Math.min(value1, value2);
         double max = Math.max(value1, value2);
-        double value = min + random.nextDouble() * (max - min + 1);
+        double value = min + random.nextDouble() * (max - min + 1.0);
         if (value < min) {
             return min;
         }
@@ -163,7 +163,7 @@ public final class RandomUtils {
     public static double randomRangeDecimalContainerInclusive(DecimalRangeContainer rangeContainer) {
         double min = rangeContainer.getLower();
         double max = rangeContainer.getHigher();
-        double value = min + random.nextDouble() * (rangeContainer.getRange() + 1);
+        double value = min + random.nextDouble() * (rangeContainer.getRange() + 1.0);
         if (value < min) {
             return min;
         }
