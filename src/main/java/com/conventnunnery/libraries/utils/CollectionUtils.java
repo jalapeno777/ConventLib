@@ -51,7 +51,7 @@ public final class CollectionUtils {
     /**
      * Takes a Collection of Strings and returns it capitalized.
      * @param collection Collection of Strings
-     * @return
+     * @return a capitalized Collection of Strings
      */
     public static Collection<String> capitalizeCollection(Collection<String> collection) {
         Collection<String> stringCollection = new ArrayList<String>();
