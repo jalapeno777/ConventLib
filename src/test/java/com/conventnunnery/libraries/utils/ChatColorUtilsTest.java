@@ -6,21 +6,28 @@ import org.junit.Test;
 
 public class ChatColorUtilsTest {
     @Test
-    public void testGetChatColorOrFallback() throws Exception {
+    public void testGetChatColorOrFallbackPositive() throws Exception {
         ChatColor value1 = ChatColor.BLACK;
         ChatColor value2;
-        ChatColor value3;
-        ChatColor value4 = ChatColor.AQUA;
-        String string1 = "PURPLE";
-        String string2 = "BLACK";
+        String string1 = "BLACK";
 
         value2 = ChatColorUtils.getChatColorOrFallback(string1, value1);
-        value3 = ChatColorUtils.getChatColorOrFallback(string2, value4);
 
         Assert.assertNotNull(value2);
-        Assert.assertNotNull(value3);
 
         Assert.assertEquals(value1, value2);
-        Assert.assertEquals(value1, value3);
+    }
+
+    @Test
+    public void testGetChatColorOrFallbackNegative() throws Exception {
+        ChatColor value1 = ChatColor.BLACK;
+        ChatColor value2;
+        String string1 = "PURPLE";
+
+        value2 = ChatColorUtils.getChatColorOrFallback(string1, value1);
+
+        Assert.assertNotNull(value2);
+
+        Assert.assertEquals(value1, value2);
     }
 }
