@@ -2,7 +2,11 @@ package com.conventnunnery.libraries.utils;
 
 import org.bukkit.ChatColor;
 
-public class ChatColorUtils {
+public final class ChatColorUtils {
+
+    private ChatColorUtils() {
+    }
+
     public static ChatColor getChatColorOrFallback(String string, ChatColor fallback) {
         String name = string;
         if (name == null) {
