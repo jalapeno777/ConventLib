@@ -4,9 +4,13 @@ import org.bukkit.ChatColor;
 
 public class ChatColorUtils {
     public static ChatColor getChatColorOrFallback(String string, ChatColor fallback) {
+        String name = string;
+        if (name == null) {
+            name = fallback.name();
+        }
         ChatColor chatColor;
         try {
-            chatColor = ChatColor.valueOf(string);
+            chatColor = ChatColor.valueOf(name);
         } catch (IllegalArgumentException exception) {
             chatColor = fallback;
         }

@@ -6,6 +6,19 @@ import org.junit.Test;
 
 public class ChatColorUtilsTest {
     @Test
+    public void testGetChatColorOrFallbackNull() throws Exception  {
+        ChatColor value1 = ChatColor.BLACK;
+        ChatColor value2;
+        String string1 = null;
+
+        value2 = ChatColorUtils.getChatColorOrFallback(string1, value1);
+
+        Assert.assertNotNull(value2);
+
+        Assert.assertEquals(value1, value2);
+    }
+
+    @Test
     public void testGetChatColorOrFallbackPositive() throws Exception {
         ChatColor value1 = ChatColor.BLACK;
         ChatColor value2;
